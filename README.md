@@ -1,3 +1,5 @@
-# sb
+# Springboard Final Project Architecture
 
-![Architecture Diagram](pics/Project_architecture.pdf "Architecture Diagram")
+>Proposed clothing item search engine using deep learning.
+
+![Architecture Diagram](pics/Project_architecture.png "Architecture Diagram")
