@@ -8,6 +8,7 @@ Eval/*
 Img/*
 modified_new/*
 dataset/*
+static/Img/*
 
 # Byte-compiled / optimized / DLL files
 !**/__pycache__/
