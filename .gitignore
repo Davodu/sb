@@ -1,2 +1,14 @@
 #notebook checkpoints
 ./ipynb_checkpoints
+uploads/*
+
+#ignore dataset content but preserve directory structure
+Anno/*
+Eval/*
+Img/*
+modified_new/*
+dataset/*
+
+# Byte-compiled / optimized / DLL files
+!**/__pycache__/
+*.py[cod]

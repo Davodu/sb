@@ -1,7 +1,4 @@
-from config import *
-from keras.models import Model
 from keras.applications.vgg16 import VGG16
-from keras.applications.vgg16 import preprocess_input
 
 
 class ImageRetrievalModel(object):
@@ -25,7 +22,7 @@ class ImageRetrievalModel(object):
 
         # specify cost and optimization method to use
         model.compile(
-        loss='categorical_crossentropy',
-        optimizer='rmsprop',
-        metrics=['accuracy']
-        )
+            loss='categorical_crossentropy',
+            optimizer='rmsprop',
+            metrics=['accuracy']
+            )

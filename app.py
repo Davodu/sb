@@ -1,9 +1,11 @@
-from utils.dataset import *
-from utils.model import *
-from inference import  *
 import config as cfg
+import os
+import numpy as np
 
 from flask import Flask, request, render_template, send_from_directory
+from utils.model import ImageRetrievalModel
+from utils.util import simple_inference
+import pickle
 
 #run 
 # utils/dataset.py
@@ -16,14 +18,14 @@ from flask import Flask, request, render_template, send_from_directory
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 #define model
-#model = ImageRetrievalModel(IMAGE_SIZE)
+model = ImageRetrievalModel(cfg.IMAGE_SIZE)
 
 #get training set vectors
-with open('hamming_train_vectors.pickle', 'rb') as f:
+with open('dataset/modified_new/catalog/hamming_train_vectors.pickle', 'rb') as f:
 	train_vectors = pickle.load(f)
 
 #Load training set paths
-with open('train_images_pickle.pickle', 'rb') as f:
+with open('dataset/modified_new/catalog/val_paths.pickle', 'rb') as f:
 	train_images_paths = pickle.load(f)
 
 #Define Flask app
@@ -49,7 +51,7 @@ def upload():
 		img.save(destination)
 
 	#inference
-	result = np.array(train_images_paths)[simple_inference(model, train_vectors, os.path.join(upload_dir, img_name), cfg.IMAGE_SIZE)]
+	result = np.array(train_images_paths)[simple_inference(model, train_vectors, os.path.join(upload_dir, img_name), cfg.IMAGE_SIZE[0])]
 
 	result_final = []
 
