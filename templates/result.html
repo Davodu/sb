@@ -11,20 +11,22 @@
 
     <div class="row">
 
-        <h2 style="text-align: center;">Query image</h1>
+        <h2 style="text-align: center;">Query Image</h1>
         <!-- Show query image -->
-        <img src=" {{url_for('send_image', filename=image_name)}}" style="margin-left: 49%;">
+        <img src=" {{url_for('send_image', filename=image_name)}}" style="display: block;margin-left: auto; margin-right: auto; width: 30%;">
 
 
-        <h1 style="text-align: center;">Result images</h1>
+        <h1 style="text-align: center;">Results in order of best match</h1>
 
         <hr>
         <!-- Iterate through images -->
-        {% for image_name in result_paths %}
-        <div class="col-lg-1 col-md-4 col-xs-6 thumb">
-            <br>
-            <img class="img-responsive" src=" {{url_for('static', filename=image_name)}}">
-        </div>
+        {% for image_path in result_paths %}
+        
+        <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+            <img src="{{url_for('static', filename=image_path)}}" height="200px">
+            <figcaption>Rank: {{loop.index }}</figcaption>
+        </figure>
+        
         {% endfor %}
     </div>
 </div>

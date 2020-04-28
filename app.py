@@ -58,7 +58,7 @@ def upload():
     result_final = []
     for img in result:
         result_final.append("Img/img/"+ ('/').join(img.split("/")[-2:])) 
-    return render_template("result.html", image_name=img_name, result_paths=result_final[:-8])#display only 12 images in user interface
+    return render_template("result.html", image_name=img_name, result_paths=result_final)#display only 12 images in user interface
 
 #Define helper function for finding image paths
 @app.route("/upload/<filename>")
@@ -67,4 +67,4 @@ def send_image(filename):
 
 #Start the application
 if __name__ == "__main__":
-	app.run(port=5000, debug=True)
+	app.run(port=8787, debug=True)
